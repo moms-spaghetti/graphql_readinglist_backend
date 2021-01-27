@@ -17,12 +17,12 @@ mongoose.connection.once("open", () => {
   console.log("Connected to database");
 });
 
-process.on("SIGINT", () => {
-  mongoose.connection.close(() => {
-    console.log("Disconnected from database");
-    process.exit(0);
-  });
-});
+// process.on("SIGINT", () => {
+//   mongoose.connection.close(() => {
+//     console.log("Disconnected from database");
+//     process.exit(0);
+//   });
+// });
 
 app.use(
   "/graphql",
@@ -32,6 +32,6 @@ app.use(
   })
 );
 
-app.listen(4000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Now listening for requests on port 4000`);
 });
